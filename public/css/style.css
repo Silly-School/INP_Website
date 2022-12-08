@@ -1,11 +1,11 @@
 /* Basis */
 :root {
-    --textNormal: #000000;
-    --textPassive: #393939;
+    --textNormal: #ffffff;
+    --textPassive: #d9d9d9;
     --textHighlight: #dd3636;
-    --colorBackground: #ffffff;
-    --colorPictures: #f4f4f4;
-    --colorPicturesHover: #bbbbbb;
+    --colorBackground: #121212;
+    --colorPictures: #81d889;
+    --colorPicturesHover: #5d79ae;
 }
 
 body {

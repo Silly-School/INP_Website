@@ -18,7 +18,7 @@ const prepairHTML = function(product) {
     //  logger.debug("File inserted");
 
     //  Read products.csv
-    const productData = fs.readFileSync('./src/products/products.csv', 'UTF8');
+    const productData = fs.readFileSync('./public/csv/products.csv', 'UTF8');
 
     //  prepaire csv data
     const products = productData.split('\n');
@@ -29,7 +29,7 @@ const prepairHTML = function(product) {
     const splitEachProduct = record => {
         const fields = record.split(",");
 
-        let html = fs.readFileSync('./src/template/productExample.html', 'utf-8');
+        let html = fs.readFileSync('./public/html/productExample.html', 'utf-8');
 
         html = html.replaceAll('${fields[0]}', fields[0]);
         html = html.replaceAll('${fields[1]}', fields[1]);
@@ -95,7 +95,7 @@ const requestListener = function(req, res) {
         case '/style.css':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/css' });
-            data = fs.readFileSync('./src/template/style.css', "utf-8");
+            data = fs.readFileSync('./public/css/style.css', "utf-8");
             break;
 
         default:
@@ -104,7 +104,6 @@ const requestListener = function(req, res) {
     }
 
     //  Respon with data
-    logger.debug(data);
     res.end(data);
 };
 

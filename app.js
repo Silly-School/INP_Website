@@ -29,15 +29,15 @@ const prepairHTML = function(product) {
     const splitEachProduct = record => {
         const fields = record.split(",");
 
-        let html = fs.readFileSync('./public/html/productExample.html', 'utf-8');
+        //  reads the productExample.html - a template for a product view on a website
+        let html = fs.readFileSync('./views/productExample.html', 'utf-8');
 
-        html = html.replaceAll('${fields[0]}', fields[0]);
-        html = html.replaceAll('${fields[1]}', fields[1]);
-        html = html.replaceAll('${fields[2]}', fields[2]);
-        html = html.replaceAll('${fields[3]}', fields[3]);
-        html = html.replaceAll('${fields[4]}', fields[4]);
-        html = html.replaceAll('${fields[5]}', fields[5]);
+        fields.forEach((field, index) => {
+            // the backslash is very important, otherwise it would count the ${fields[]} an js object.
+            html = html.replaceAll(`\${fields[${index}]}`, field);
+        });
 
+        //  returns the html
         return html;
     };
 
@@ -49,14 +49,11 @@ const prepairHTML = function(product) {
 };
 
 
-/*      requestListener Function
+/*
     Handles the Request to give a specific response.
     Here is the "Routing" part of the website.
 */
 const requestListener = function(req, res) {
-
-    //  predefine data
-    let data = '';
 
     //  response in eah case of url
     switch (req.url) {
@@ -64,47 +61,53 @@ const requestListener = function(req, res) {
         case '/':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            data = prepairHTML(4);
-            logger.debug('worked!');
+            res.end(fs.readFileSync('./views/index.html', "utf-8"));
             break;
 
         case '/rtx-4090-founders-edition':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            data = prepairHTML(3);
+            res.end(prepairHTML(3));
             break;
 
         case '/corsair-vengeance-rgb-pro':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            data = prepairHTML(2);
+            res.end(prepairHTML(2));
             break;
 
         case '/ryzen-9-7950x':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            data = prepairHTML(1);
+            res.end(prepairHTML(1));
             break;
 
         case '/asus-rog-mainboard':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            data = prepairHTML(0);
+            res.end(prepairHTML(0));
             break;
 
-        case '/style.css':
+        //  First CSS file routed
+        case '/style-dark.css':
             //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/css' });
-            data = fs.readFileSync('./public/css/style.css', "utf-8");
+            res.end(fs.readFileSync('./public/css/style-dark.css', "utf-8"));
+            break;
+
+        //  Second CSS file routed
+        case '/style-light.css':
+            //  set data to -> fileread ./src/index/index.html
+            res.writeHeader(200, { 'Content-Type': 'text/css' });
+            res.end(fs.readFileSync('./public/css/style-light.css', "utf-8"));
             break;
 
         default:
-            logger.error(req.url);
+            //  TODO: Add Css File to this to make it look pretier
+            res.writeHeader(404, { 'Content-Type': 'text/html' });
+            res.end(fs.readFileSync('./views/404.html', "utf-8"));
             break;
     }
-
-    //  Respon with data
-    res.end(data);
 };
 
 //  create local server
@@ -113,7 +116,7 @@ const server = http.createServer(requestListener);
 //  start server on Port with error handling
 server.listen(PORT, function(error){
     if (error){
-        logger.error('Something went wrong\n' + error);
+        logger.error(`Something went wrong\n${error}`);
     } else {
         logger.success(`server successfully startet at: http://localhost:${PORT}`);
     }

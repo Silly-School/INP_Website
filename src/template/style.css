@@ -1,0 +1,67 @@
+/* Basis */
+:root {
+    --textNormal: #000000;
+    --textPassive: #393939;
+    --textHighlight: #dd3636;
+    --colorBackground: #ffffff;
+    --colorPictures: #f4f4f4;
+    --colorPicturesHover: #bbbbbb;
+}
+
+body {
+    background-color: var(--colorBackground);
+    font-family: SF Pro Text,SF Pro Icons,AOS Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: var(--textNormal);
+    margin: 20px;
+}
+
+/* Header */
+header {
+    font-size: larger;
+}
+
+.headerNew {
+    color: var(--textHighlight);
+}
+
+/* Product Section */
+button {
+    background-color: var(--colorPictures);
+    color: var(--textNormal);
+    font-size: larger;
+    height: 45px;
+    width: 100%;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: var(--colorPicturesHover);
+}
+
+.productIntro {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding: 50px;
+}
+
+.productIntroImage {
+    border-radius: 20px;
+    padding: 1vw;
+    width: 70%;
+}
+
+.productIntroInfo {
+    padding: 1vw;
+    height: 50%;
+    width: 30%;
+}
+
+.productID {
+    font-size: small;
+}
+
+.productPrice {
+    font-size: x-large;
+}

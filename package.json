@@ -1,0 +1,22 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "start:dev": "nodemon ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "ls": "^0.2.1",
+    "silly-logger": "^1.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "nodemon": "^2.0.20"
+  }
+}

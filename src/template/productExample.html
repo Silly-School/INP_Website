@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>${fields[0]}</title>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header>
+            <nav>
+                <h1>${fields[0]} kaufen</h1>
+                <p class="headerNew">Nur für kurze Zeit!</p>
+            </nav>
+        </header>
+
+        <!-- Section -->
+        <section class="productIntro">
+            <div class="productIntroImage">
+                <img width="100%" src="${fields[5]}">
+            </div>
+            <div class="productIntroInfo">
+                <h3>${fields[0]}</h3>
+                <p>${fields[1]}</p>
+                <p class="productID">ID: ${fields[2]}</p>
+                <p class="productPrice">${fields[4]} €</p>
+                <hr>
+                <button>Jetzt kaufen!</button>
+                <p></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer></footer>
+    </body>
+</html>

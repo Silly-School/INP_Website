@@ -96,7 +96,6 @@ const prepairIndex = function() {
     Here is the "Routing" part of the website.
 */
 const requestListener = function(req, res) {
-
     //  response in eah case of url
     switch (req.url) {
         case '/':

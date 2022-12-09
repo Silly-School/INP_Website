@@ -38,6 +38,10 @@ header {
 
 }
 
+.productList div img {
+    border-radius: 10px;
+}
+
 /* product Information */
 .productInformation {
     background-color: var(--colorSecondary);

@@ -1,6 +1,6 @@
 "use strict";
 
-// get all dependencies
+// get all needed dependencies
 const http = require("http");
 const logger = require("silly-logger");
 const requestListener = require('./app/routing');

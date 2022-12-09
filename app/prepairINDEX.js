@@ -1,15 +1,15 @@
+"use strict";
+
+// get all needed dependencies
 const fs = require('fs');
 
-//  Read products.csv
+//  Read products.csv, split at \n and shift one line.
 const productData = fs.readFileSync('./public/csv/products.csv', 'UTF8');
-
-//  prepaire csv data
 const products = productData.split('\n');
-
-//  Shift one line
 products.shift();
 
-/*      prepairIndex function
+/*
+    prepairIndex function
     This function will split the csv data to finally use it in our index.html
 */
 const prepairINDEX = function() {
@@ -17,7 +17,7 @@ const prepairINDEX = function() {
     const splitEachProduct = record => {
         const fields = record.split(";");
 
-        //  reads the productExample.html - a template for a product view on a website
+        //  prepaires code to insert into the index.js
         let productSnippet = `
             <div>
                 <img width="100%" src="${fields[4]}">
@@ -33,7 +33,10 @@ const prepairINDEX = function() {
             productSnippet = productSnippet.replaceAll(`\${fields[${index}]}`, field);
         });
 
+        //  relaces the {redirect} the lowercase and space = ' ' variant for routing
+        //  eg. Anno 1800 turns into anno-1800
         productSnippet = productSnippet.replaceAll('{redirect}', fields[0].toLowerCase().replace(/ /g, "-"));
+
         //  returns the html
         return productSnippet;
     };
@@ -42,6 +45,7 @@ const prepairINDEX = function() {
         .filter(row => row !== "")
         .map(splitEachProduct);
 
+    //  reads the index.js and replaces ${insertGames} with the prepaired data above
     const html = fs.readFileSync('./views/index.html', 'utf-8');
     let data = ``;
 

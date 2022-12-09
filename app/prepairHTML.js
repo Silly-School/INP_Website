@@ -1,15 +1,15 @@
+"use strict";
+
+// get all needed dependencies
 const fs = require('fs');
 
-//  Read products.csv
+//  Read products.csv, split at \n and shift one line.
 const productData = fs.readFileSync('./public/csv/products.csv', 'UTF8');
-
-//  prepaire csv data
 const products = productData.split('\n');
-
-//  Shift one line
 products.shift();
 
-/*      prepairHTML function
+/*
+    prepairHTML function
     This function will split the csv data to finally use it in our html
 */
 const prepairHTML = function(product) {

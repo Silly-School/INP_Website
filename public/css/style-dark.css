@@ -1,5 +1,6 @@
 /* Basis */
-:root {
+
+:root /* General */ {
     scroll-behavior: smooth;
     --textNormal: #ffffff;
     --textPassive: #d9d9d9;
@@ -8,7 +9,7 @@
     --colorSecondary: #212529;
 }
 
-body {
+body /* General */ {
     background-color: var(--colorBackground);
     font-family: SF Pro Text,SF Pro Icons,AOS Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
     color: var(--textNormal);
@@ -17,49 +18,52 @@ body {
 }
 
 /* Navigation Bar */
-nav {
+
+nav /* General */ {
     background-color: var(--colorSecondary);
     border-radius: 50px;
 }
 
-nav ul {
+nav ul /* General */ {
     padding-left: 1vw;
 }
 
-nav ul li {
+nav ul li /* General */ {
     display: inline-block;
     padding-top: 10px;
     padding-bottom: 10px;
 }
   
-nav ul li a {
+nav ul li a /* General */ {
     color: var(--textNormal);
     text-decoration: none;
     transition-duration: 0.3s;
     padding: 15px;
 }
   
-nav ul li a:hover {
+nav ul li a:hover /* General */ {
     background-color: var(--colorBackground);
 }
 
-nav ul li a img {
+nav ul li a img /* General */ {
     max-height: 20px;
 }
 
 /* Header */
-header {
+
+header /* General */ {
     font-size: larger;
 }
 
 /* product List */
-.productList {
+
+.productList /* index.html */ {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.productList div {
+.productList div /* index.html */ {
     background-color: var(--colorSecondary);
     border-radius: 10px;
     align-items:center;
@@ -67,26 +71,26 @@ header {
     padding: 15px;
     max-width: 300px;
     min-width: 200px;
-
 }
 
-.productList div img {
+.productList div img /* index.html */ {
     border-radius: 10px;
 }
 
 /* product Information */
-.productInformation {
+
+.productInformation /* productExample.html */ {
     background-color: var(--colorSecondary);
     border-radius: 10px;
     padding: 20px;
     max-width: 90vh;
 }
 
-.productInformation img {
+.productInformation img /* productExample.html */ {
     border-radius: 10px;
 }
 
-Button {
+Button /* General */ {
     color: var(--textNormal);
     background-color: var(--colorBackground);
     border-radius: 10px;
@@ -94,20 +98,20 @@ Button {
     width: 100%;
     height: 40px;
     border: none;
-    align-self: flex-end;
 }
 
-Button:hover {
+Button:hover /* General */ {
     background-color: var(--colorSecondary);
 }
 
-.productPrice {
+.productPrice /* productExample.html */ {
     color: var(--textHighlight);
     font-size: larger;
 }
 
 /* Footer */ 
-footer {
+
+footer /* General */ {
     background-attachment: scroll;
     background-position: 0% 0%;
     opacity: 20%;

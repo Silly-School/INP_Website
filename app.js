@@ -104,6 +104,16 @@ const requestListener = function(req, res) {
             res.end(prepairIndex());
             break;
 
+        case '/cyberpunk-2077':
+            res.writeHeader(200, { 'Content-Type': 'text/html' });
+            res.end(prepairHTML(4));
+            break;
+
+        case '/war-thunder':
+            res.writeHeader(200, { 'Content-Type': 'text/html' });
+            res.end(prepairHTML(3));
+            break;
+
         case '/overcooked!-2':
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML(2));
@@ -134,6 +144,8 @@ const requestListener = function(req, res) {
             res.end(fs.readFileSync('./views/404.html', "utf-8"));
             break;
     }
+
+    logger.custom(req.connection.remoteAddress, "yellow", "", req.url)
 };
 
 //  create local server

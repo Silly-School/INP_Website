@@ -17,28 +17,27 @@
         <!-- Header -->
         <header>
             <nav>
-                <h1>${fields[0]} kaufen</h1>
-                <p class="headerNew">Nur für kurze Zeit!</p>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
             </nav>
         </header>
 
         <!-- Section -->
-        <section class="productIntro">
-            <div class="productIntroImage">
-                <img width="100%" src="${fields[5]}">
-            </div>
-            <div class="productIntroInfo">
-                <h3>${fields[0]}</h3>
-                <p>${fields[1]}</p>
-                <p class="productID">ID: ${fields[2]}</p>
-                <p class="productPrice">${fields[4]} €</p>
-                <hr>
-                <button>Jetzt kaufen!</button>
-                <p></p>
-            </div>
-        </section>
+        <center>
+            <section class="productInformation">
+                    <img width="100%" src="${fields[4]}">
+                    <h3>${fields[0]}</h3>
+                    <p>${fields[1]}</p>
+                    <p class="productPrice">${fields[3]} €</p>
+                    <hr>
+                    <a href="${fields[5]}" target="_blank"><button>Jetzt kaufen!</button></a>
+            </section>
+        </center>
 
         <!-- Footer -->
-        <footer></footer>
+        <footer>
+            © 2022 SillySoon
+        </footer>
     </body>
 </html>

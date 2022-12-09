@@ -1,16 +1,10 @@
-/*
-    This was an experiment to find out how to route different css files
-    turns out its very easy so here is a "White Mode Version" of the Website.
-*/
-
 /* Basis */
 :root {
     --textNormal: #121212;
-    --textPassive: #242424;
-    --textHighlight: #dd3636;
-    --colorBackground: #fdfdfd;
-    --colorPictures: #81d889;
-    --colorPicturesHover: #5d79ae;
+    --textPassive: #262626;
+    --textHighlight: #0c79a9;
+    --colorBackground: #ffffff;
+    --colorSecondary: #f9f9f9;
 }
 
 body {
@@ -25,48 +19,65 @@ header {
     font-size: larger;
 }
 
-.headerNew {
-    color: var(--textHighlight);
+.productInformation {
+    background-color: var(--colorSecondary);
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
 }
 
-/* Product Section */
-button {
-    background-color: var(--colorPictures);
+.productInformation img {
+    border-radius: 10px;
+}
+
+.productInformation Button {
     color: var(--textNormal);
-    font-size: larger;
-    height: 45px;
+    background-color: var(--colorBackground);
+    border-radius: 10px;
+    transition-duration: 0.3s;
     width: 100%;
+    height: 40px;
     border: none;
-    transition-duration: 0.4s;
 }
 
-button:hover {
-    background-color: var(--colorPicturesHover);
-}
-
-.productIntro {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    padding: 50px;
-}
-
-.productIntroImage {
-    border-radius: 20px;
-    padding: 1vw;
-    width: 70%;
-}
-
-.productIntroInfo {
-    padding: 1vw;
-    height: 50%;
-    width: 30%;
-}
-
-.productID {
-    font-size: small;
+.productInformation Button:hover {
+    background-color: var(--colorSecondary);
 }
 
 .productPrice {
-    font-size: x-large;
+    color: var(--textHighlight);
+    font-size: larger;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--colorSecondary);
+    border-radius: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+  
+nav ul li a {
+    color: var(--textNormal);
+    text-decoration: none;
+    transition-duration: 0.3s;
+    padding: 15px;
+}
+  
+nav ul li a:hover {
+    background-color: var(--colorBackground);
+}
+  
+
+/* Footer */ 
+footer {
+    text-align: center;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    opacity: 20%;
+    position: fixed;
+    bottom: 10pt;
 }

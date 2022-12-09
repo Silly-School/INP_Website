@@ -11,23 +11,22 @@ const PORT = 8080;
 // Message that the local server is starting
 logger.startup("starting local server");
 
+
+//  Read products.csv
+const productData = fs.readFileSync('./public/csv/products.csv', 'UTF8');
+
+//  prepaire csv data
+const products = productData.split('\n');
+
+//  Shift one line
+products.shift();
+
 /*      prepairHTML function
     This function will split the csv data to finally use it in our html
 */
 const prepairHTML = function(product) {
-    //  logger.debug("File inserted");
-
-    //  Read products.csv
-    const productData = fs.readFileSync('./public/csv/products.csv', 'UTF8');
-
-    //  prepaire csv data
-    const products = productData.split('\n');
-
-    //  Shift one line
-    products.shift();
-
     const splitEachProduct = record => {
-        const fields = record.split(",");
+        const fields = record.split(";");
 
         //  reads the productExample.html - a template for a product view on a website
         let html = fs.readFileSync('./views/productExample.html', 'utf-8');
@@ -48,6 +47,49 @@ const prepairHTML = function(product) {
     return (pages[product]);
 };
 
+/*      prepairIndex function
+    This function will split the csv data to finally use it in our index.html
+*/
+const prepairIndex = function() {
+
+    const splitEachProduct = record => {
+        const fields = record.split(";");
+
+        //  reads the productExample.html - a template for a product view on a website
+        let productSnippet = `
+            <div>
+                <img width="100%" src="${fields[4]}">
+                <h3>${fields[0]}</h3>
+                <p>${fields[1]}</p>
+                <hr>
+                <a href="{redirect}"><button>View Game!</button></a>
+            </div>
+        `;
+
+        fields.forEach((field, index) => {
+            // the backslash is very important, otherwise it would count the ${fields[]} an js object.
+            productSnippet = productSnippet.replaceAll(`\${fields[${index}]}`, field);
+        });
+
+        productSnippet = productSnippet.replaceAll('{redirect}', fields[0].toLowerCase().replace(/ /g, "-"))
+        //  returns the html
+        return productSnippet;
+    }
+
+    const pages = products
+        .filter(row => row !== "")
+        .map(splitEachProduct);
+
+    let html = fs.readFileSync('./views/index.html', 'utf-8')
+    let data = ``
+
+    pages.forEach(site => {
+        data = data + site;
+    });       
+
+    return(html.replace('${insertGames}', data));
+}
+
 
 /*
     Handles the Request to give a specific response.
@@ -57,53 +99,37 @@ const requestListener = function(req, res) {
 
     //  response in eah case of url
     switch (req.url) {
-        //  Respond with the Template
         case '/':
-            //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/html' });
-            res.end(fs.readFileSync('./views/index.html', "utf-8"));
+            res.end(prepairIndex());
             break;
 
-        case '/rtx-4090-founders-edition':
-            //  set data to -> fileread ./src/index/index.html
-            res.writeHeader(200, { 'Content-Type': 'text/html' });
-            res.end(prepairHTML(3));
-            break;
-
-        case '/corsair-vengeance-rgb-pro':
-            //  set data to -> fileread ./src/index/index.html
+        case '/overcooked!-2':
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML(2));
             break;
 
-        case '/ryzen-9-7950x':
-            //  set data to -> fileread ./src/index/index.html
+        case '/thehunter-call-of-the-wild':
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML(1));
             break;
 
-        case '/asus-rog-mainboard':
-            //  set data to -> fileread ./src/index/index.html
+        case '/anno-1800':
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML(0));
             break;
 
-        //  First CSS file routed
         case '/style-dark.css':
-            //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/css' });
             res.end(fs.readFileSync('./public/css/style-dark.css', "utf-8"));
             break;
 
-        //  Second CSS file routed
         case '/style-light.css':
-            //  set data to -> fileread ./src/index/index.html
             res.writeHeader(200, { 'Content-Type': 'text/css' });
             res.end(fs.readFileSync('./public/css/style-light.css', "utf-8"));
             break;
 
         default:
-            //  TODO: Add Css File to this to make it look pretier
             res.writeHeader(404, { 'Content-Type': 'text/html' });
             res.end(fs.readFileSync('./views/404.html', "utf-8"));
             break;

@@ -66,14 +66,20 @@ header /* General */ {
 .productList div /* index.html */ {
     background-color: var(--colorSecondary);
     border-radius: 10px;
-    align-items:center;
     margin: 15px;
     padding: 15px;
     max-width: 300px;
     min-width: 200px;
 }
 
+/*
+.productList div section {
+     Move this to bottom  
+}
+*/
+
 .productList div img /* index.html */ {
+    align-content: flex-end;
     border-radius: 10px;
 }
 

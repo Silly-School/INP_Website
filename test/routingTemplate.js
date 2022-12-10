@@ -1,0 +1,35 @@
+"use strict";
+
+// get all needed dependencies
+const fs = require('fs');
+const prepairHTML = require('../app/prepairHTML');
+const prepairINDEX = require('../app/prepairINDEX');
+const logger = require('silly-logger');
+
+/*
+    requestListener function
+    This function will route the requests and gives responses
+*/
+const requestListener = function(req, res) {
+    //  response in eah case of url
+    switch (req.url) {
+        case '/':
+            //  standard path => index.js
+            res.writeHeader(200, { 'Content-Type': 'text/html' });
+            res.end(prepairINDEX());
+            break;
+
+        ${extraCases}
+
+        default:
+            //  default error404 path => /404.html
+            res.writeHeader(404, { 'Content-Type': 'text/html' });
+            res.end(fs.readFileSync('./views/404.html', "utf-8"));
+            break;
+    }
+
+    //  logs IP and requested url/path
+    logger.custom(req.connection.remoteAddress, "yellow", "", req.url);
+};
+
+module.exports = requestListener;

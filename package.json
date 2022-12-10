@@ -1,6 +1,6 @@
 {
-  "name": "website",
-  "version": "1.0.0",
+  "name": "inp-website",
+  "version": "1.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {

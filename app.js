@@ -4,6 +4,9 @@
 const http = require("http");
 const logger = require("silly-logger");
 const requestListener = require('./app/routing');
+const refreshRouting = require('./test/prepairRouting');
+
+refreshRouting();
 
 // define a port
 const PORT = 8080;

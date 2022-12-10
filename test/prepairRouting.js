@@ -28,7 +28,7 @@ const refreshRouting = function() {
 
         //  reads the productExample.html - a template for a product view on a website
         let html = `
-        case '/{path}':
+        case "/{path}":
             //  game path => /{path}
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML({number}));
@@ -38,7 +38,6 @@ const refreshRouting = function() {
         html = html.replaceAll('{path}', fields[0].toLowerCase().replace(/ /g, "-"));
 
         //  replaces the {number} with the game ID
-        //  TODO: when the number is not in order the code will break
         html = html.replaceAll('{number}', fields[2]);
 
 
@@ -59,7 +58,7 @@ const refreshRouting = function() {
 
     imagesFolder.forEach(element => {
         data = data + `
-        case '/public/images/${element}':
+        case "/public/images/${element}":
             //  image path => /${element}
             res.writeHeader(200, { 'Content-Type': 'image/png' });
             res.end(fs.readFileSync('./public/images/${element}'));
@@ -71,18 +70,31 @@ const refreshRouting = function() {
 
     cssFolder.forEach(element => {
         data = data + `
-        case '/${element}':
+        case "/${element}":
             //  css path => /${element}
             res.writeHeader(200, { 'Content-Type': 'text/css' });
             res.end(fs.readFileSync('./public/css/${element}', "utf-8"));
             break;`;
     });
 
+    //  prepair font files part
+    /*  TODO: have to figure out why fonts wont work
+    const fontFolder = fs.readdirSync('./public/fonts/');
+
+    fontFolder.forEach(element => {
+        data = data + `
+        case "/${element}":
+            //  css path => /${element}
+            res.writeHeader(200, { 'Content-Type': 'application/octet-stream' });
+            res.end(fs.readFileSync('./public/fonts/${element}', "utf-8"));
+            break;`;
+    });
+    */
+
     // merging the document with data, for that de document contains ${extraCases} so that we can easiely replace it
     document = document.replace('${extraCases}', data);
 
     // remove the current routing file and renew it
-    //  TODO: nodemon (npm run start:dev) restarts every time the file changes, blacklist the routing.js to make it work
     fs.rmSync('./app/routing.js');
     logger.custom('Remove', 'red', '', 'Removed ./app/routing.js');
 

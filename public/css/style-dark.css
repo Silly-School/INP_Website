@@ -1,19 +1,28 @@
 /* Basis */
 
+/*  TODO: figure out why not working
+@font-face {
+    font-family: Aaargh;
+    src: url('./fonts/Aaargh.ttf');
+}
+*/
+
 :root /* General */ {
     scroll-behavior: smooth;
     --textNormal: #ffffff;
     --textPassive: #d9d9d9;
     --textHighlight: #0dcaf0;
-    --colorBackground: #36393f;
-    --colorSecondary: #212529;
+    --colorBackground: #141414;
+    --colorSecondary: #1c1c1c;
+    --colorAccents: #EEC643;
+    --colorAccentsLight: #f7d76d;
 }
 
 body /* General */ {
     background-color: var(--colorBackground);
+    /* maybe the fonts are from the apple website ,-, JUST MAYBE! */
     font-family: SF Pro Text,SF Pro Icons,AOS Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
     color: var(--textNormal);
-    padding-bottom: 10vh;
     margin: 20px;
 }
 
@@ -72,11 +81,21 @@ header /* General */ {
     min-width: 200px;
 }
 
-/*
-.productList div section {
-     Move this to bottom  
+.productList div section /* index.html */ {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
-*/
+
+.productList div section p /* index.html */ {
+    background-color: var(--colorBackground);
+    color: var(--textPassive);
+    border-radius: 10px;
+    font-size: small;
+    padding: 5px;
+    margin: 0px;
+    
+}
 
 .productList div img /* index.html */ {
     align-content: flex-end;
@@ -97,8 +116,8 @@ header /* General */ {
 }
 
 Button /* General */ {
-    color: var(--textNormal);
-    background-color: var(--colorBackground);
+    color: var(--colorBackground);
+    background-color: var(--colorAccents);
     border-radius: 10px;
     transition-duration: 0.3s;
     width: 100%;
@@ -107,11 +126,11 @@ Button /* General */ {
 }
 
 Button:hover /* General */ {
-    background-color: var(--colorSecondary);
+    background-color: var(--colorAccentsLight);
 }
 
 .productPrice /* productExample.html */ {
-    color: var(--textHighlight);
+    color: var(--colorAccents);
     font-size: larger;
 }
 
@@ -121,6 +140,5 @@ footer /* General */ {
     background-attachment: scroll;
     background-position: 0% 0%;
     opacity: 20%;
-    position: fixed;
     bottom: 10pt;
 }

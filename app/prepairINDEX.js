@@ -22,11 +22,13 @@ const prepairINDEX = function() {
             <div>
                 <img width="100%" src="${fields[4]}">
                 <h3>${fields[0]}</h3>
-                <p>${fields[1]}</p>
                 <section>
-                    <hr>
-                    <a href="{redirect}"><button>View Game!</button></a>
+                    <p>${fields[6]}</p>
+                    <p>${fields[7]}</p>
+                    <p>${fields[8]}</p>
                 </section>
+                <hr>
+                <a href="{redirect}"><button>View Game!</button></a>
             </div>
         `;
 

@@ -1,11 +1,11 @@
 {
   "name": "inp-website",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node ./app.js",
-    "start:dev": "nodemon ./app.js"
+    "start:dev": "nodemon ./app.js --ignore ./app/routing.js"
   },
   "keywords": [],
   "author": "",

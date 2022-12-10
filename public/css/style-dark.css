@@ -11,7 +11,6 @@
     scroll-behavior: smooth;
     --textNormal: #ffffff;
     --textPassive: #d9d9d9;
-    --textHighlight: #0dcaf0;
     --colorBackground: #141414;
     --colorSecondary: #1c1c1c;
     --colorAccents: #EEC643;
@@ -99,6 +98,7 @@ header /* General */ {
     font-size: small;
     padding: 5px;
     margin: 0px; 
+    cursor: default;
 }
 
 .productList div section p:hover /* index.html */ {
@@ -131,6 +131,7 @@ Button /* General */ {
     width: 100%;
     height: 40px;
     border: none;
+    cursor: pointer;
 }
 
 Button:hover /* General */ {

@@ -6,6 +6,7 @@ const logger = require("silly-logger");
 const requestListener = require('./app/routing');
 const refreshRouting = require('./test/prepairRouting');
 
+//  refreshes the routing.js
 refreshRouting();
 
 // define a port

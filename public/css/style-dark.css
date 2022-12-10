@@ -77,24 +77,32 @@ header /* General */ {
     border-radius: 10px;
     margin: 15px;
     padding: 15px;
-    max-width: 300px;
+    max-width: 350px;
     min-width: 200px;
+}
+
+.productList div h3 {
+    margin-left: 10px;
 }
 
 .productList div section /* index.html */ {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
+    background-color: var(--colorBackground);
+    border-radius: 50px;
 }
 
 .productList div section p /* index.html */ {
-    background-color: var(--colorBackground);
     color: var(--textPassive);
-    border-radius: 10px;
+    transition-duration: 0.3s;
     font-size: small;
     padding: 5px;
-    margin: 0px;
-    
+    margin: 0px; 
+}
+
+.productList div section p:hover /* index.html */ {
+    color: var(--colorAccents);
 }
 
 .productList div img /* index.html */ {
@@ -132,6 +140,12 @@ Button:hover /* General */ {
 .productPrice /* productExample.html */ {
     color: var(--colorAccents);
     font-size: larger;
+}
+
+/* Error 404 Site */
+
+.error404 img /* 404.html */ {
+    max-width: 90%;
 }
 
 /* Footer */ 

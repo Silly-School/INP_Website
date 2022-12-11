@@ -22,7 +22,7 @@ const prepairINDEX = function() {
             <div>
                 <img width="100%" src="${fields[4]}">
                 <h3>${fields[0]}</h3>
-                <section>
+                <section class="categoryTags">
                     <p>${fields[6]}</p>
                     <p>${fields[7]}</p>
                     <p>${fields[8]}</p>

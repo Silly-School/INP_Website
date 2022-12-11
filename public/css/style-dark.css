@@ -84,7 +84,7 @@ header /* General */ {
     margin-left: 10px;
 }
 
-.productList div section /* index.html */ {
+.categoryTags /* index.html & productExample.html */ {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -92,7 +92,7 @@ header /* General */ {
     border-radius: 50px;
 }
 
-.productList div section p /* index.html */ {
+.categoryTags p /* index.html & productExample.html */ {
     color: var(--textPassive);
     transition-duration: 0.3s;
     font-size: small;
@@ -101,7 +101,7 @@ header /* General */ {
     cursor: default;
 }
 
-.productList div section p:hover /* index.html */ {
+.categoryTags p:hover /* index.html & productExample.html */ {
     color: var(--colorAccents);
 }
 

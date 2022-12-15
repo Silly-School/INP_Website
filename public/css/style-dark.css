@@ -28,12 +28,16 @@ body /* General */ {
 /* Navigation Bar */
 
 nav /* General */ {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--colorSecondary);
     border-radius: 50px;
 }
 
 nav ul /* General */ {
     padding-left: 1vw;
+    padding-right: 1vw;
+    margin: 0px;
 }
 
 nav ul li /* General */ {
@@ -61,6 +65,7 @@ nav ul li a img /* General */ {
 
 header /* General */ {
     font-size: larger;
+    margin-bottom: 20px;
 }
 
 /* product List */

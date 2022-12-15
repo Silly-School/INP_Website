@@ -79,6 +79,11 @@ const requestListener = function(req, res) {
             res.writeHeader(200, { 'Content-Type': 'text/html' });
             res.end(prepairHTML(11));
             break;
+        case "/terraria":
+            //  game path => /terraria
+            res.writeHeader(200, { 'Content-Type': 'text/html' });
+            res.end(prepairHTML(12));
+            break;
         case "/public/images/github.png":
             //  image path => /github.png
             res.writeHeader(200, { 'Content-Type': 'image/png' });
@@ -93,6 +98,16 @@ const requestListener = function(req, res) {
             //  image path => /kofi.png
             res.writeHeader(200, { 'Content-Type': 'image/png' });
             res.end(fs.readFileSync('./public/images/kofi.png'));
+            break;
+        case "/public/images/shopping-cart.png":
+            //  image path => /shopping-cart.png
+            res.writeHeader(200, { 'Content-Type': 'image/png' });
+            res.end(fs.readFileSync('./public/images/shopping-cart.png'));
+            break;
+        case "/public/images/user.png":
+            //  image path => /user.png
+            res.writeHeader(200, { 'Content-Type': 'image/png' });
+            res.end(fs.readFileSync('./public/images/user.png'));
             break;
         case "/style-dark.css":
             //  css path => /style-dark.css

@@ -6,6 +6,9 @@ const logger = require("silly-logger");
 const requestListener = require('./app/routing');
 const refreshRouting = require('./test/prepairRouting');
 
+//  Setup timeFormat
+logger.timeFormat("MMM Do YY - h:mm:ss:ms a");
+
 //  refreshes the routing.js
 refreshRouting();
 
